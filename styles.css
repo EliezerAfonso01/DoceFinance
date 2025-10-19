@@ -88,8 +88,8 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     position: relative;
     overflow: hidden;
-    padding-top: 90px; /* Compensate for fixed navbar */
-    min-height: calc(100vh - 90px); /* Adjust min-height to account for navbar */
+    padding-top: 110px; /* Compensate for fixed navbar */
+    min-height: calc(100vh - 110px); /* Adjust min-height to account for navbar */
 }
 
 .hero-section::before {
