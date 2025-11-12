@@ -1166,3 +1166,164 @@ html {
         font-size: 24px;
     }
 }
+
+/* Download Section */
+.download-card {
+    background: var(--bg-white);
+    padding: 2.5rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 2px solid #e9ecef;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.download-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.download-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
+}
+
+.download-card:hover::before {
+    transform: scaleX(1);
+}
+
+.download-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: var(--transition);
+}
+
+.download-card:hover .download-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.download-icon i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.download-instructions {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+    text-align: left;
+}
+
+.download-instructions h6 {
+    color: var(--text-dark);
+    font-size: 1rem;
+}
+
+.download-instructions ol {
+    padding-left: 1.25rem;
+    margin-bottom: 0;
+}
+
+.download-instructions li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.download-instructions strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.download-info {
+    border: 1px solid #e9ecef;
+    transition: var(--transition);
+}
+
+.download-info:hover {
+    box-shadow: var(--shadow);
+    border-color: var(--primary-light);
+}
+
+.download-info h5 {
+    color: var(--text-dark);
+    font-size: 1.25rem;
+}
+
+.download-info h6 {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.download-info p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+/* Download Section Responsive */
+@media (max-width: 768px) {
+    .download-card {
+        padding: 2rem;
+    }
+    
+    .download-icon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .download-icon i {
+        font-size: 2rem;
+    }
+    
+    .download-instructions {
+        padding: 1.25rem;
+    }
+    
+    .download-info {
+        padding: 1.5rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .download-card {
+        padding: 1.5rem;
+    }
+    
+    .download-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .download-icon i {
+        font-size: 1.75rem;
+    }
+    
+    .download-instructions {
+        padding: 1rem;
+    }
+    
+    .download-instructions h6 {
+        font-size: 0.9rem;
+    }
+    
+    .download-instructions ol {
+        font-size: 0.85rem;
+    }
+}
