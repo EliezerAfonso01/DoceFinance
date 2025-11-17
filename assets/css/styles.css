@@ -95,6 +95,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     animation: slideDown 0.5s ease-out;
     transition: all 0.3s ease;
+    padding: 0.5rem 0;
 }
 
 .youtube-banner.hidden {
@@ -103,7 +104,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Adjust navbar position when YouTube banner is visible */
 body:not(.banner-hidden) .navbar {
-    top: 64px;
+    top: 72px;
 }
 
 body.banner-hidden .navbar {
@@ -157,14 +158,14 @@ body.banner-hidden .navbar {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     position: relative;
     overflow: hidden;
-    padding-top: 140px; /* Compensate for fixed navbar + YouTube banner */
-    min-height: calc(100vh - 140px);
+    padding-top: 180px; /* Compensate for fixed navbar + YouTube banner */
+    min-height: calc(100vh - 180px);
     transition: padding-top 0.3s ease, min-height 0.3s ease;
 }
 
 body.banner-hidden .hero-section {
-    padding-top: 76px; /* Only navbar */
-    min-height: calc(100vh - 76px);
+    padding-top: 100px; /* Only navbar */
+    min-height: calc(100vh - 100px);
 }
 
 /* Accessibility & utility */

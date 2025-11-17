@@ -376,6 +376,7 @@ function showPlanSelectionModal(planName, planPrice, planPeriod) {
                 email: formObject.planEmail,
                 phone: formObject.planPhone,
                 business: formObject.planBusiness,
+                message: `Solicitação de Plano\n\nPlano: ${planName}\nPreço: KZ ${planPrice}${planPeriod}\n\nO cliente deseja adquirir este plano.`,
                 to_email: 'docefinance.suporte@gmail.com',
                 submitted_at: new Date().toISOString(),
                 user_agent: navigator.userAgent
