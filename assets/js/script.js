@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormValidation();
     initCounters();
     initCountdown();
+    initYoutubeBanner();
 });
 // EmailJS integration
 let lastSubmitAtByForm = {};
@@ -185,7 +186,9 @@ function initModals() {
                     first_name: formObject.firstName,
                     last_name: formObject.lastName,
                     email: formObject.email,
+                    phone: formObject.phone,
                     business: formObject.business,
+                    message: formObject.message,
                     to_email: 'docefinance.suporte@gmail.com',
                     submitted_at: new Date().toISOString(),
                     user_agent: navigator.userAgent
@@ -438,6 +441,12 @@ function isValidPhone(phone) {
     return phoneRegex.test(phone.replace(/\s/g, ''));
 }
 
+// Phone validation for exactly 9 digits
+function isValidPhone9Digits(phone) {
+    const cleanPhone = phone.replace(/\D/g, '');
+    return cleanPhone.length === 9 && /^[0-9]{9}$/.test(cleanPhone);
+}
+
 // Initialize countdown timer
 function initCountdown() {
     // Set the launch date: November 27, 2024 (current year)
@@ -508,7 +517,7 @@ function initFormValidation() {
     const forms = document.querySelectorAll('form');
     
     forms.forEach(form => {
-        const inputs = form.querySelectorAll('input[required]');
+        const inputs = form.querySelectorAll('input[required], textarea[required]');
         
         inputs.forEach(input => {
             input.addEventListener('blur', function() {
@@ -527,7 +536,7 @@ function validateDemoForm(data) {
     let isValid = true;
     
     // Validate required fields
-    const requiredFields = ['firstName', 'lastName', 'email', 'business'];
+    const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'business', 'message'];
     requiredFields.forEach(field => {
         const input = document.getElementById(field);
         if (!data[field] || data[field].trim() === '') {
@@ -540,6 +549,20 @@ function validateDemoForm(data) {
     const email = document.getElementById('email');
     if (data.email && !isValidEmail(data.email)) {
         showFieldError(email, 'Por favor, insira um email válido');
+        isValid = false;
+    }
+    
+    // Validate phone (must be exactly 9 digits)
+    const phone = document.getElementById('phone');
+    if (data.phone && !isValidPhone9Digits(data.phone)) {
+        showFieldError(phone, 'O telefone deve ter exatamente 9 dígitos');
+        isValid = false;
+    }
+    
+    // Validate message (minimum 10 characters)
+    const message = document.getElementById('message');
+    if (data.message && data.message.trim().length < 10) {
+        showFieldError(message, 'A mensagem deve ter no mínimo 10 caracteres');
         isValid = false;
     }
     
@@ -564,6 +587,12 @@ function validateField(field) {
     
     if (field.type === 'email' && value && !isValidEmail(value)) {
         showFieldError(field, 'Por favor, insira um email válido');
+        return false;
+    }
+    
+    // Validate textarea with minimum length
+    if (field.tagName === 'TEXTAREA' && value && value.length < 10) {
+        showFieldError(field, 'A mensagem deve ter no mínimo 10 caracteres');
         return false;
     }
     
@@ -748,3 +777,38 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Initialize YouTube banner
+function initYoutubeBanner() {
+    const banner = document.querySelector('.youtube-banner');
+    const closeBtn = document.getElementById('closeYoutubeBanner');
+    
+    if (!banner || !closeBtn) return;
+    
+    // Check if banner was previously closed
+    const bannerClosed = localStorage.getItem('df_youtube_banner_closed');
+    
+    if (bannerClosed === 'true') {
+        banner.classList.add('hidden');
+        document.body.classList.add('banner-hidden');
+    } else {
+        document.body.classList.remove('banner-hidden');
+    }
+    
+    // Close banner on button click
+    closeBtn.addEventListener('click', function() {
+        banner.classList.add('hidden');
+        document.body.classList.add('banner-hidden');
+        localStorage.setItem('df_youtube_banner_closed', 'true');
+    });
+}
+
+// Function to show YouTube banner (can be called if you want to show it again)
+function showYoutubeBanner() {
+    const banner = document.querySelector('.youtube-banner');
+    if (banner) {
+        banner.classList.remove('hidden');
+        document.body.classList.remove('banner-hidden');
+        localStorage.removeItem('df_youtube_banner_closed');
+    }
+}

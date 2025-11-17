@@ -65,6 +65,30 @@
         </div>
     </nav>
 
+    <!-- YouTube Banner -->
+    <div class="youtube-banner">
+        <div class="container">
+            <div class="row align-items-center py-3">
+                <div class="col-lg-8 col-md-7 text-center text-md-start mb-2 mb-md-0">
+                    <i class="fab fa-youtube me-2" style="font-size: 1.5rem; color: #FF0000;"></i>
+                    <strong>Novo!</strong> O canal do DoceFinance no YouTube já está disponível!
+                    <span class="d-none d-lg-inline">Tutoriais, dicas e muito mais para aproveitar melhor a
+                        plataforma.</span>
+                </div>
+                <div class="col-lg-4 col-md-5 text-center text-md-end">
+                    <a href="https://www.youtube.com/@DoceFinance" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-light btn-sm youtube-btn">
+                        <i class="fab fa-youtube me-2"></i>Ir para o Canal
+                    </a>
+                    <button class="btn btn-link btn-sm text-white ms-2" id="closeYoutubeBanner"
+                        aria-label="Fechar banner">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section id="home" class="hero-section">
         <div class="container">
@@ -558,7 +582,8 @@
                                 <li class="mb-2">No seu dispositivo Android, vá em <strong>Configurações >
                                         Segurança</strong></li>
                                 <li class="mb-2">Ative a opção <strong>"Fontes Desconhecidas"</strong> ou
-                                    <strong>"Instalar apps desconhecidos"</strong></li>
+                                    <strong>"Instalar apps desconhecidos"</strong>
+                                </li>
                                 <li class="mb-2">Abra o arquivo APK baixado</li>
                                 <li class="mb-2">Toque em <strong>"Instalar"</strong> quando solicitado</li>
                                 <li>Aguarde a instalação e abra o app</li>
@@ -594,7 +619,8 @@
                                 <li class="mb-2">Extraia o conteúdo do arquivo ZIP</li>
                                 <li class="mb-2">Localize o arquivo <strong>.msix</strong> dentro da pasta extraída</li>
                                 <li class="mb-2">Clique com o botão direito no arquivo .msix e selecione
-                                    <strong>"Instalar"</strong></li>
+                                    <strong>"Instalar"</strong>
+                                </li>
                                 <li class="mb-2">Se aparecer um aviso de segurança, clique em <strong>"Mais
                                         informações"</strong> e depois em <strong>"Executar mesmo assim"</strong></li>
                                 <li>Aguarde a instalação e abra o DoceFinance pelo menu Iniciar</li>
@@ -691,10 +717,11 @@
                             <a href="#" class="social-link me-3" title="Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="#" class="social-link me-3" title="WhatsApp">
+                            <a href="https://wa.me/244955602059?text=Ol%C3%A1%2C%20vim%20do%20site%20DoceFinance"
+                                class="social-link me-3" title="WhatsApp">
                                 <i class="fab fa-whatsapp"></i>
                             </a>
-                            <a href="#" class="social-link" title="YouTube">
+                            <a href="https://www.youtube.com/@DoceFinance" class="social-link" title="YouTube">
                                 <i class="fab fa-youtube"></i>
                             </a>
                         </div>
@@ -919,8 +946,21 @@
                                 <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="col-12">
+                                <label for="phone" class="form-label">Telefone</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required maxlength="9"
+                                    pattern="[0-9]{9}" placeholder="9 dígitos">
+                                <small class="text-muted">Digite apenas 9 números</small>
+                            </div>
+                            <div class="col-12">
                                 <label for="business" class="form-label">Nome do seu negócio</label>
                                 <input type="text" class="form-control" id="business" name="business" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="message" class="form-label">Motivo do contato ou assunto</label>
+                                <textarea class="form-control" id="message" name="message" rows="4"
+                                    placeholder="Conte-nos por que você deseja entrar em contato ou o que gostaria de saber sobre o DoceFinance..."
+                                    required></textarea>
+                                <small class="text-muted">Mínimo 10 caracteres</small>
                             </div>
                             <div class="col-12">
                                 <div class="form-check">

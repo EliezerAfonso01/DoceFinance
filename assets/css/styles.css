@@ -83,13 +83,88 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+/* YouTube Banner */
+.youtube-banner {
+    background: linear-gradient(135deg, #FF0000, #CC0000);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1031;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.5s ease-out;
+    transition: all 0.3s ease;
+}
+
+.youtube-banner.hidden {
+    display: none;
+}
+
+/* Adjust navbar position when YouTube banner is visible */
+body:not(.banner-hidden) .navbar {
+    top: 64px;
+}
+
+body.banner-hidden .navbar {
+    top: 0;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.youtube-banner strong {
+    color: #FFF200;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.youtube-btn {
+    background: white;
+    color: #FF0000;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+    padding: 0.4rem 1rem;
+}
+
+.youtube-btn:hover {
+    background: #FFF200;
+    color: #CC0000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.youtube-banner .btn-link {
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.youtube-banner .btn-link:hover {
+    opacity: 1;
+}
+
 /* Hero Section */
 .hero-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     position: relative;
     overflow: hidden;
-    padding-top: 110px; /* Compensate for fixed navbar */
-    min-height: calc(100vh - 110px); /* Adjust min-height to account for navbar */
+    padding-top: 140px; /* Compensate for fixed navbar + YouTube banner */
+    min-height: calc(100vh - 140px);
+    transition: padding-top 0.3s ease, min-height 0.3s ease;
+}
+
+body.banner-hidden .hero-section {
+    padding-top: 76px; /* Only navbar */
+    min-height: calc(100vh - 76px);
 }
 
 /* Accessibility & utility */
