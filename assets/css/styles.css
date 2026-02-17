@@ -30,6 +30,7 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     overflow-x: hidden;
+    font-size: 0.95rem;
 }
 
 /* Typography */
@@ -49,6 +50,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar {
     transition: var(--transition);
     padding: 1rem 0;
+    top: 0 !important;
 }
 
 .navbar-brand {
@@ -96,19 +98,11 @@ h1, h2, h3, h4, h5, h6 {
     animation: slideDown 0.5s ease-out;
     transition: all 0.3s ease;
     padding: 0.5rem 0;
+    display: none; /* Ocultado por padrão */
 }
 
 .youtube-banner.hidden {
     display: none;
-}
-
-/* Adjust navbar position when YouTube banner is visible */
-body:not(.banner-hidden) .navbar {
-    top: 72px;
-}
-
-body.banner-hidden .navbar {
-    top: 0;
 }
 
 @keyframes slideDown {
@@ -158,14 +152,9 @@ body.banner-hidden .navbar {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     position: relative;
     overflow: hidden;
-    padding-top: 180px; /* Compensate for fixed navbar + YouTube banner */
-    min-height: calc(100vh - 180px);
-    transition: padding-top 0.3s ease, min-height 0.3s ease;
-}
-
-body.banner-hidden .hero-section {
-    padding-top: 100px; /* Only navbar */
+    padding-top: 100px; /* Compensar apenas o navbar fixo */
     min-height: calc(100vh - 100px);
+    transition: padding-top 0.3s ease, min-height 0.3s ease;
 }
 
 /* Accessibility & utility */
@@ -319,6 +308,33 @@ body.banner-hidden .hero-section {
 .feature-icon i {
     font-size: 2rem;
     color: white;
+}
+
+/* Feature Icon Small - for contact page */
+.feature-icon-small {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.feature-icon-small i {
+    font-size: 1rem;
+    color: white;
+}
+
+/* Contact Items */
+.contact-item {
+    transition: var(--transition);
+}
+
+.contact-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 /* Testimonial Cards */
@@ -817,7 +833,8 @@ body.banner-hidden .hero-section {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-section {
-        padding: 2rem 0;
+        padding-top: 80px;
+        padding-bottom: 2rem;
     }
     
     .display-4 {
@@ -854,10 +871,6 @@ body.banner-hidden .hero-section {
 @media (max-width: 576px) {
     .container {
         padding: 0 1rem;
-    }
-    
-    .hero-section .container {
-        padding-top: 4rem;
     }
     
     .feature-card,
@@ -1177,15 +1190,15 @@ html {
     
     /* Hero section mobile adjustments */
     .hero-section {
-        padding-top: 70px; /* Slightly less padding on mobile */
-        min-height: calc(100vh - 70px);
+        padding-top: 80px;
+        min-height: calc(100vh - 80px);
     }
 }
 
 @media (max-width: 576px) {
     .hero-section {
-        padding-top: 60px; /* Even less padding on small mobile */
-        min-height: calc(100vh - 60px);
+        padding-top: 70px;
+        min-height: calc(100vh - 70px);
     }
 }
 
@@ -1401,5 +1414,43 @@ html {
     
     .download-instructions ol {
         font-size: 0.85rem;
+    }
+}
+
+body.contact-page .legal-content {
+    font-size: 0.9rem;
+}
+
+body.contact-page h1 {
+    font-size: 2.5rem;
+}
+
+body.contact-page h3 {
+    font-size: 1.5rem;
+}
+
+body.contact-page h6 {
+    font-size: 0.95rem;
+}
+
+body.contact-page .form-label {
+    font-size: 0.9rem;
+}
+
+body.contact-page .btn {
+    font-size: 0.95rem;
+}
+
+body.contact-page .alert {
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    body.contact-page h1 {
+        font-size: 2rem;
+    }
+    
+    body.contact-page h3 {
+        font-size: 1.25rem;
     }
 }

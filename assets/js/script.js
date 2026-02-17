@@ -1,6 +1,6 @@
 // DoceFinance Landing Page JavaScript
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize all functionality
     initEmail();
     initSmoothScrolling();
@@ -19,7 +19,7 @@ function initEmail() {
         if (window.emailjs && window.DF_EMAIL && window.DF_EMAIL.publicKey) {
             window.emailjs.init({ publicKey: window.DF_EMAIL.publicKey });
         }
-    } catch (_) {}
+    } catch (_) { }
 }
 
 function isRateLimited(formId) {
@@ -72,17 +72,17 @@ async function sendEmail(formId, templateKey, params, buttonToRestore) {
 // Smooth scrolling for navigation links
 function initSmoothScrolling() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
-    
+
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             if (targetSection) {
                 const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
-                
+
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -96,23 +96,23 @@ function initSmoothScrolling() {
 function initNavbarScroll() {
     const navbar = document.querySelector('.navbar');
     let lastScrollTop = 0;
-    
-    window.addEventListener('scroll', function() {
+
+    window.addEventListener('scroll', function () {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
+
         if (scrollTop > 100) {
             navbar.classList.add('navbar-scrolled');
         } else {
             navbar.classList.remove('navbar-scrolled');
         }
-        
+
         // Hide/show navbar on scroll
         if (scrollTop > lastScrollTop && scrollTop > 200) {
             navbar.style.transform = 'translateY(-100%)';
         } else {
             navbar.style.transform = 'translateY(0)';
         }
-        
+
         lastScrollTop = scrollTop;
     });
 }
@@ -124,8 +124,8 @@ function initAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
-    const observer = new IntersectionObserver(function(entries) {
+
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('fade-in-up');
@@ -133,13 +133,13 @@ function initAnimations() {
             }
         });
     }, observerOptions);
-    
+
     // Observe elements for animation
     const animatedElements = document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card');
     animatedElements.forEach(el => {
         observer.observe(el);
     });
-    
+
     // Stagger animation for feature cards
     const featureCards = document.querySelectorAll('.feature-card');
     featureCards.forEach((card, index) => {
@@ -153,11 +153,11 @@ function initModals() {
     const demoModal = document.getElementById('demoModal');
     const demoForm = demoModal.querySelector('form');
     const demoSubmitBtn = demoModal.querySelector('.btn-primary');
-    
+
     if (demoForm && demoSubmitBtn) {
-        demoSubmitBtn.addEventListener('click', async function(e) {
+        demoSubmitBtn.addEventListener('click', async function (e) {
             e.preventDefault();
-            
+
             // Get form data
             const formData = new FormData(demoForm);
             // Honeypot basic check
@@ -168,7 +168,7 @@ function initModals() {
             formData.forEach((value, key) => {
                 formObject[key] = value;
             });
-            
+
             // Validate form
             if (validateDemoForm(formObject)) {
                 showLoadingState(demoSubmitBtn);
@@ -211,11 +211,11 @@ function initModals() {
             }
         });
     }
-    
+
     // Video modal
     const videoModal = document.getElementById('videoModal');
     if (videoModal) {
-        videoModal.addEventListener('hidden.bs.modal', function() {
+        videoModal.addEventListener('hidden.bs.modal', function () {
             // Stop embedded iframe video (legacy)
             const iframe = videoModal.querySelector('iframe');
             if (iframe) {
@@ -227,11 +227,11 @@ function initModals() {
                 try {
                     video.pause();
                     video.currentTime = 0;
-                } catch (e) {}
+                } catch (e) { }
             }
         });
     }
-    
+
     // Pricing plan buttons
     initPricingButtons();
 }
@@ -239,14 +239,14 @@ function initModals() {
 // Initialize pricing buttons
 function initPricingButtons() {
     const pricingButtons = document.querySelectorAll('.pricing-card .btn');
-    
+
     pricingButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const pricingCard = this.closest('.pricing-card');
             const planName = pricingCard.querySelector('h5').textContent;
             const planPrice = pricingCard.querySelector('.amount').textContent;
             const planPeriod = pricingCard.querySelector('.period').textContent;
-            
+
             // Show plan selection modal or redirect to contact
             showPlanSelectionModal(planName, planPrice, planPeriod);
         });
@@ -327,25 +327,25 @@ function showPlanSelectionModal(planName, planPrice, planPeriod) {
             </div>
         </div>
     `;
-    
+
     // Remove existing modal if any
     const existingModal = document.getElementById('planModal');
     if (existingModal) {
         existingModal.remove();
     }
-    
+
     // Add modal to body
     document.body.insertAdjacentHTML('beforeend', modalHTML);
-    
+
     // Show modal
     const modal = new bootstrap.Modal(document.getElementById('planModal'));
     modal.show();
-    
+
     // Handle form submission
     const submitBtn = document.getElementById('submitPlanBtn');
     const planForm = document.getElementById('planForm');
-    
-    submitBtn.addEventListener('click', async function() {
+
+    submitBtn.addEventListener('click', async function () {
         const formData = new FormData(planForm);
         if ((formData.get('website') || '').toString().trim().length > 0) {
             return;
@@ -354,7 +354,7 @@ function showPlanSelectionModal(planName, planPrice, planPeriod) {
         formData.forEach((value, key) => {
             formObject[key] = value;
         });
-        
+
         // Validate form
         if (validatePlanForm(formObject)) {
             showLoadingState(submitBtn);
@@ -392,9 +392,9 @@ function showPlanSelectionModal(planName, planPrice, planPeriod) {
             if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     });
-    
+
     // Clean up modal when hidden
-    document.getElementById('planModal').addEventListener('hidden.bs.modal', function() {
+    document.getElementById('planModal').addEventListener('hidden.bs.modal', function () {
         this.remove();
     });
 }
@@ -402,7 +402,7 @@ function showPlanSelectionModal(planName, planPrice, planPeriod) {
 // Validate plan form
 function validatePlanForm(data) {
     let isValid = true;
-    
+
     const requiredFields = ['planFirstName', 'planLastName', 'planEmail', 'planPhone', 'planBusiness'];
     requiredFields.forEach(field => {
         const input = document.getElementById(field);
@@ -411,28 +411,28 @@ function validatePlanForm(data) {
             isValid = false;
         }
     });
-    
+
     // Validate email
     const email = document.getElementById('planEmail');
     if (data.planEmail && !isValidEmail(data.planEmail)) {
         showFieldError(email, 'Por favor, insira um email válido');
         isValid = false;
     }
-    
+
     // Validate phone
     const phone = document.getElementById('planPhone');
     if (data.planPhone && !isValidPhone(data.planPhone)) {
         showFieldError(phone, 'Por favor, insira um telefone válido');
         isValid = false;
     }
-    
+
     // Validate terms checkbox
     const terms = document.getElementById('planTerms');
     if (!terms.checked) {
         showFieldError(terms, 'Você deve aceitar os termos de uso');
         isValid = false;
     }
-    
+
     return isValid;
 }
 
@@ -453,45 +453,45 @@ function initCountdown() {
     // Set the launch date: November 27, 2024 (current year)
     const currentYear = new Date().getFullYear();
     const launchDate = new Date(`November 27, ${currentYear} 00:00:00`).getTime();
-    
+
     // Update the year in the HTML
     const yearElement = document.getElementById('launch-year');
     if (yearElement) {
         yearElement.textContent = currentYear;
     }
-    
+
     // Update countdown every second
-    const countdownInterval = setInterval(function() {
+    const countdownInterval = setInterval(function () {
         const now = new Date().getTime();
         const distance = launchDate - now;
-        
+
         // Calculate time units
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
+
         // Update the countdown display
         const daysElement = document.getElementById('days');
         const hoursElement = document.getElementById('hours');
         const minutesElement = document.getElementById('minutes');
         const secondsElement = document.getElementById('seconds');
-        
+
         if (daysElement) daysElement.innerHTML = days.toString().padStart(2, '0');
         if (hoursElement) hoursElement.innerHTML = hours.toString().padStart(2, '0');
         if (minutesElement) minutesElement.innerHTML = minutes.toString().padStart(2, '0');
         if (secondsElement) secondsElement.innerHTML = seconds.toString().padStart(2, '0');
-        
+
         // If countdown is finished
         if (distance < 0) {
             clearInterval(countdownInterval);
-            
+
             // Update countdown display to show launch message
             if (daysElement) daysElement.innerHTML = '00';
             if (hoursElement) hoursElement.innerHTML = '00';
             if (minutesElement) minutesElement.innerHTML = '00';
             if (secondsElement) secondsElement.innerHTML = '00';
-            
+
             // Show launch message
             const countdownContainer = document.querySelector('.launch-countdown');
             if (countdownContainer) {
@@ -516,16 +516,16 @@ function initCountdown() {
 // Form validation
 function initFormValidation() {
     const forms = document.querySelectorAll('form');
-    
+
     forms.forEach(form => {
         const inputs = form.querySelectorAll('input[required], textarea[required]');
-        
+
         inputs.forEach(input => {
-            input.addEventListener('blur', function() {
+            input.addEventListener('blur', function () {
                 validateField(this);
             });
-            
-            input.addEventListener('input', function() {
+
+            input.addEventListener('input', function () {
                 clearFieldError(this);
             });
         });
@@ -535,7 +535,7 @@ function initFormValidation() {
 // Validate demo form
 function validateDemoForm(data) {
     let isValid = true;
-    
+
     // Validate required fields
     const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'business', 'message'];
     requiredFields.forEach(field => {
@@ -545,58 +545,58 @@ function validateDemoForm(data) {
             isValid = false;
         }
     });
-    
+
     // Validate email
     const email = document.getElementById('email');
     if (data.email && !isValidEmail(data.email)) {
         showFieldError(email, 'Por favor, insira um email válido');
         isValid = false;
     }
-    
+
     // Validate phone (must be exactly 9 digits)
     const phone = document.getElementById('phone');
     if (data.phone && !isValidPhone9Digits(data.phone)) {
         showFieldError(phone, 'O telefone deve ter exatamente 9 dígitos');
         isValid = false;
     }
-    
+
     // Validate message (minimum 10 characters)
     const message = document.getElementById('message');
     if (data.message && data.message.trim().length < 10) {
         showFieldError(message, 'A mensagem deve ter no mínimo 10 caracteres');
         isValid = false;
     }
-    
+
     // Validate terms checkbox
     const terms = document.getElementById('terms');
     if (!terms.checked) {
         showFieldError(terms, 'Você deve aceitar os termos de uso');
         isValid = false;
     }
-    
+
     return isValid;
 }
 
 // Validate individual field
 function validateField(field) {
     const value = field.value.trim();
-    
+
     if (field.hasAttribute('required') && !value) {
         showFieldError(field, 'Este campo é obrigatório');
         return false;
     }
-    
+
     if (field.type === 'email' && value && !isValidEmail(value)) {
         showFieldError(field, 'Por favor, insira um email válido');
         return false;
     }
-    
+
     // Validate textarea with minimum length
     if (field.tagName === 'TEXTAREA' && value && value.length < 10) {
         showFieldError(field, 'A mensagem deve ter no mínimo 10 caracteres');
         return false;
     }
-    
+
     clearFieldError(field);
     return true;
 }
@@ -604,20 +604,20 @@ function validateField(field) {
 // Show field error
 function showFieldError(field, message) {
     clearFieldError(field);
-    
+
     field.classList.add('is-invalid');
-    
+
     const errorDiv = document.createElement('div');
     errorDiv.className = 'invalid-feedback';
     errorDiv.textContent = message;
-    
+
     field.parentNode.appendChild(errorDiv);
 }
 
 // Clear field error
 function clearFieldError(field) {
     field.classList.remove('is-invalid');
-    
+
     const errorDiv = field.parentNode.querySelector('.invalid-feedback');
     if (errorDiv) {
         errorDiv.remove();
@@ -635,7 +635,7 @@ function showLoadingState(button) {
     const originalText = button.textContent;
     button.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processando...';
     button.disabled = true;
-    
+
     // Store original text for later restoration
     button.dataset.originalText = originalText;
 }
@@ -643,16 +643,16 @@ function showLoadingState(button) {
 // Reset form
 function resetForm(form) {
     form.reset();
-    
+
     // Clear all validation states
     const inputs = form.querySelectorAll('.is-invalid');
     inputs.forEach(input => {
         input.classList.remove('is-invalid');
     });
-    
+
     const errorDivs = form.querySelectorAll('.invalid-feedback');
     errorDivs.forEach(div => div.remove());
-    
+
     // Reset submit button
     const submitBtn = form.querySelector('.btn-primary');
     if (submitBtn && submitBtn.dataset.originalText) {
@@ -672,9 +672,9 @@ function showSuccessMessage(message) {
         ${message}
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     `;
-    
+
     document.body.appendChild(alertDiv);
-    
+
     // Auto remove after 5 seconds
     setTimeout(() => {
         if (alertDiv.parentNode) {
@@ -686,8 +686,8 @@ function showSuccessMessage(message) {
 // Initialize counters animation
 function initCounters() {
     const counters = document.querySelectorAll('.stat-value');
-    
-    const counterObserver = new IntersectionObserver(function(entries) {
+
+    const counterObserver = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 animateCounter(entry.target);
@@ -695,7 +695,7 @@ function initCounters() {
             }
         });
     }, { threshold: 0.5 });
-    
+
     counters.forEach(counter => {
         counterObserver.observe(counter);
     });
@@ -707,14 +707,14 @@ function animateCounter(element) {
     const duration = 2000;
     const increment = target / (duration / 16);
     let current = 0;
-    
+
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
             current = target;
             clearInterval(timer);
         }
-        
+
         // Format number with currency symbol if needed
         if (element.textContent.includes('R$')) {
             element.textContent = `R$ ${Math.floor(current).toLocaleString()}`;
@@ -783,21 +783,21 @@ document.head.appendChild(style);
 function initYoutubeBanner() {
     const banner = document.querySelector('.youtube-banner');
     const closeBtn = document.getElementById('closeYoutubeBanner');
-    
+
     if (!banner || !closeBtn) return;
-    
+
     // Check if banner was previously closed
     const bannerClosed = localStorage.getItem('df_youtube_banner_closed');
-    
+
     if (bannerClosed === 'true') {
         banner.classList.add('hidden');
         document.body.classList.add('banner-hidden');
     } else {
         document.body.classList.remove('banner-hidden');
     }
-    
+
     // Close banner on button click
-    closeBtn.addEventListener('click', function() {
+    closeBtn.addEventListener('click', function () {
         banner.classList.add('hidden');
         document.body.classList.add('banner-hidden');
         localStorage.setItem('df_youtube_banner_closed', 'true');
@@ -812,4 +812,73 @@ function showYoutubeBanner() {
         document.body.classList.remove('banner-hidden');
         localStorage.removeItem('df_youtube_banner_closed');
     }
+}
+
+// Contact Page Form Handler
+function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+    contactForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Rate limiting
+        if (isRateLimited('contactForm')) {
+            const statusEl = document.getElementById('contactStatus');
+            showFormStatus(statusEl, 'warning', 'Aguarde alguns segundos antes de enviar novamente.');
+            return;
+        }
+
+        // Honeypot check
+        const honeypot = contactForm.querySelector('[name="website"]');
+        if (honeypot && honeypot.value) return;
+
+        // Validate form
+        if (contactForm.checkValidity()) {
+            contactForm.classList.remove('was-validated');
+
+            // Collect data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                business: document.getElementById('business').value || 'Não informado',
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toLocaleString('pt-BR')
+            };
+
+            // Update button
+            if (submitBtn) {
+                submitBtn.dataset.originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Enviando...';
+                submitBtn.disabled = true;
+            }
+
+            // Send email
+            const sent = await sendEmail('contactForm', 'demo', formData, submitBtn);
+
+            if (sent) {
+                resetForm(contactForm);
+                // Scroll to success message
+                setTimeout(() => {
+                    document.getElementById('contactStatus').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+        } else {
+            contactForm.classList.add('was-validated');
+            const statusEl = document.getElementById('contactStatus');
+            showFormStatus(statusEl, 'danger', 'Por favor, preencha todos os campos obrigatórios corretamente.');
+            const firstInvalid = contactForm.querySelector(':invalid');
+            if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    });
+}
+
+// Initialize contact form if on contact page
+if (document.getElementById('contactForm')) {
+    initContactForm();
 }
