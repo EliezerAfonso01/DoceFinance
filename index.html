@@ -48,16 +48,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#pricing">Preços</a>
                     </li>
+                    <!--
                     <li class="nav-item">
                         <a class="nav-link" href="#download">Download</a>
                     </li>
+                    -->
                     <li class="nav-item">
                         <a class="nav-link" href="contato.html">Contato</a>
                     </li>
                 </ul>
-                <button class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#demoModal">
-                    <i class="fas fa-paper-plane me-2"></i>Solicitar Demo
-                </button>
+                <!-- Demo button removido; pedidos sao feitos na pagina de contato -->
             </div>
         </div>
     </nav>
@@ -75,8 +75,8 @@
                         organizar, controlar e crescer seu negócio de doces e sobremesas.
                     </p>
                     <div class="d-flex flex-wrap gap-3 mb-4">
-                        <a href="#download" class="btn btn-primary btn-lg px-4">
-                            <i class="fas fa-download me-2"></i>Começar Agora
+                        <a href="contato.html" class="btn btn-primary btn-lg px-4">
+                            <i class="fas fa-paper-plane me-2"></i>Solicitar Aplicacao
                         </a>
                         <button class="btn btn-outline-primary btn-lg px-4" data-bs-toggle="modal"
                             data-bs-target="#videoModal">
@@ -297,7 +297,7 @@
             </div>
             <div class="row g-4 justify-content-center">
                 <!-- Starter Plan -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="pricing-card">
                         <div class="pricing-badge bg-secondary">Teste Inicial</div>
                         <div class="pricing-header">
@@ -312,22 +312,20 @@
                             <p class="text-muted small mb-3"><strong>Para quem:</strong> Quer testar a aplicação</p>
                             <h6 class="fw-bold text-success mb-2">O que inclui:</h6>
                             <ul class="list-unstyled mb-3">
-                                <li><i class="fas fa-check text-success me-2"></i>Apenas cálculos de receitas</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Criação de receitas (limitada)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Criação de ingredientes (limitada)
+                                </li>
+                                <li><i class="fas fa-check text-success me-2"></i>Precificação inteligente</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Gestão de despesas</li>
                             </ul>
-                            <h6 class="fw-bold text-danger mb-2">Limitações:</h6>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-times text-danger me-2"></i>Não pode criar receitas</li>
-                                <li><i class="fas fa-times text-danger me-2"></i>Não pode criar ingredientes</li>
-                                <li><i class="fas fa-times text-danger me-2"></i>Não pode gerir catálogo</li>
-                                <li><i class="fas fa-times text-danger me-2"></i>Sem partilha de receitas</li>
-                            </ul>
+                            <p class="text-muted small mb-0"><strong>Limites:</strong> Ideal para testes e uso leve</p>
                         </div>
                         <button class="btn btn-outline-primary w-100">Escolher Plano</button>
                     </div>
                 </div>
 
                 <!-- Essencial Plan -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="pricing-card">
                         <div class="pricing-badge bg-info">Mais Popular</div>
                         <div class="pricing-header">
@@ -343,52 +341,20 @@
                                 ocasionalmente</p>
                             <h6 class="fw-bold text-success mb-2">O que inclui:</h6>
                             <ul class="list-unstyled mb-3">
-                                <li><i class="fas fa-check text-success me-2"></i>Criação limitada de receitas</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Criação de ingredientes</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Controle de custos</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Criação de receitas (ampla)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Criação de ingredientes (ampla)</li>
                                 <li><i class="fas fa-check text-success me-2"></i>Precificação inteligente</li>
                                 <li><i class="fas fa-check text-success me-2"></i>Gestão de despesas</li>
                             </ul>
-                            <h6 class="fw-bold text-warning mb-2">Limitações:</h6>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-exclamation text-warning me-2"></i>Algumas ações consomem mais
-                                    créditos</li>
-                            </ul>
+                            <p class="text-muted small mb-0"><strong>Limites:</strong> Créditos equilibrados para uso
+                                frequente</p>
                         </div>
                         <button class="btn btn-outline-primary w-100">Escolher Plano</button>
                     </div>
                 </div>
 
-                <!-- Pro Plan -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="pricing-card featured">
-                        <div class="pricing-badge">Recomendado</div>
-                        <div class="pricing-header">
-                            <h5 class="fw-bold">Pro</h5>
-                            <div class="price">
-                                <span class="currency">KZ</span>
-                                <span class="amount">8.000</span>
-                            </div>
-                            <small class="text-muted">100 Créditos</small>
-                        </div>
-                        <div class="pricing-features">
-                            <p class="text-muted small mb-3"><strong>Para quem:</strong> Negócios em crescimento</p>
-                            <h6 class="fw-bold text-success mb-2">O que inclui:</h6>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-check text-success me-2"></i>Mais liberdade de criação</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Partilha de receitas</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Partilha de ingredientes</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Gestão de clientes</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Relatórios básicos de lucro</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Controle de despesas</li>
-                            </ul>
-                        </div>
-                        <button class="btn btn-primary w-100">Escolher Plano</button>
-                    </div>
-                </div>
-
                 <!-- Premium Plan -->
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="pricing-card">
                         <div class="pricing-badge bg-warning text-dark">💎 Melhor Valor</div>
                         <div class="pricing-header">
@@ -405,14 +371,11 @@
                                 completa</p>
                             <h6 class="fw-bold text-success mb-2">Tudo desbloqueado:</h6>
                             <ul class="list-unstyled">
-                                <li><i class="fas fa-check text-success me-2"></i>Criação ilimitada de receitas</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Partilha ilimitada</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Gestão completa de despesas</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Gestão de pedidos</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Gestão de clientes</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Relatórios avançados</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Backup automático</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Suporte prioritário</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Criação de receitas (ilimitada)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Criação de ingredientes (ilimitada)
+                                </li>
+                                <li><i class="fas fa-check text-success me-2"></i>Precificação inteligente</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Gestão de despesas</li>
                             </ul>
                         </div>
                         <button class="btn btn-outline-primary w-100">Escolher Plano</button>
@@ -485,7 +448,8 @@
         </div>
     </section>
 
-    <!-- Download Section -->
+    <!-- Download Section (desativado ate disponibilizar APK/MSIX) -->
+    <!--
     <section id="download" class="py-5 bg-light">
         <div class="container">
             <div class="row">
@@ -496,120 +460,118 @@
                 </div>
             </div>
             <div class="row g-4 justify-content-center">
-                <!-- Mobile Download Card -->
-                <div class="col-lg-5 col-md-6">
-                    <div class="download-card h-100">
-                        <div class="download-icon mb-4">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Versão Mobile</h4>
-                        <p class="text-muted mb-4">Para dispositivos Android. Gerencie seu negócio de doces onde quer
-                            que esteja.</p>
+               Mobile Download Card 
+    <div class="col-lg-5 col-md-6">
+        <div class="download-card h-100">
+            <div class="download-icon mb-4">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h4 class="fw-bold mb-3">Versão Mobile</h4>
+            <p class="text-muted mb-4">Para dispositivos Android. Gerencie seu negócio de doces onde quer
+                que esteja.</p>
 
-                        <div class="download-instructions mb-4">
-                            <h6 class="fw-bold mb-3">
-                                <i class="fas fa-info-circle text-primary me-2"></i>Como Instalar:
-                            </h6>
-                            <ol class="text-start text-muted small">
-                                <li class="mb-2">Baixe o arquivo APK no botão abaixo</li>
-                                <li class="mb-2">No seu dispositivo Android, vá em <strong>Configurações >
-                                        Segurança</strong></li>
-                                <li class="mb-2">Ative a opção <strong>"Fontes Desconhecidas"</strong> ou
-                                    <strong>"Instalar apps desconhecidos"</strong>
-                                </li>
-                                <li class="mb-2">Abra o arquivo APK baixado</li>
-                                <li class="mb-2">Toque em <strong>"Instalar"</strong> quando solicitado</li>
-                                <li>Aguarde a instalação e abra o app</li>
-                            </ol>
-                        </div>
+            <div class="download-instructions mb-4">
+                <h6 class="fw-bold mb-3">
+                    <i class="fas fa-info-circle text-primary me-2"></i>Como Instalar:
+                </h6>
+                <ol class="text-start text-muted small">
+                    <li class="mb-2">Baixe o arquivo APK no botão abaixo</li>
+                    <li class="mb-2">No seu dispositivo Android, vá em <strong>Configurações >
+                            Segurança</strong></li>
+                    <li class="mb-2">Ative a opção <strong>"Fontes Desconhecidas"</strong> ou
+                        <strong>"Instalar apps desconhecidos"</strong>
+                    </li>
+                    <li class="mb-2">Abra o arquivo APK baixado</li>
+                    <li class="mb-2">Toque em <strong>"Instalar"</strong> quando solicitado</li>
+                    <li>Aguarde a instalação e abra o app</li>
+                </ol>
+            </div>
 
-                        <a href="assets/src/downloads/docefinance_mobile.apk" class="btn btn-primary btn-lg w-100"
-                            download>
-                            <i class="fas fa-download me-2"></i>Baixar para Android
-                        </a>
-                        <small class="text-muted d-block mt-2">
-                            <i class="fas fa-file me-1"></i>Formato: APK
-                        </small>
-                    </div>
+            <a href="assets/src/downloads/docefinance_mobile.apk" class="btn btn-primary btn-lg w-100" download>
+                <i class="fas fa-download me-2"></i>Baixar para Android
+            </a>
+            <small class="text-muted d-block mt-2">
+                <i class="fas fa-file me-1"></i>Formato: APK
+            </small>
+        </div>
+    </div>
+
+     Desktop Download Card 
+    <div class="col-lg-5 col-md-6">
+        <div class="download-card h-100">
+            <div class="download-icon mb-4">
+                <i class="fas fa-desktop"></i>
+            </div>
+            <h4 class="fw-bold mb-3">Versão Desktop</h4>
+            <p class="text-muted mb-4">Para Windows. Versão completa com todas as funcionalidades para o seu
+                computador.</p>
+
+            <div class="download-instructions mb-4">
+                <h6 class="fw-bold mb-3">
+                    <i class="fas fa-info-circle text-primary me-2"></i>Como Instalar:
+                </h6>
+                <ol class="text-start text-muted small">
+                    <li class="mb-2">Baixe o arquivo ZIP no botão abaixo</li>
+                    <li class="mb-2">Extraia o conteúdo do arquivo ZIP</li>
+                    <li class="mb-2">Localize o arquivo <strong>.msix</strong> dentro da pasta extraída</li>
+                    <li class="mb-2">Clique com o botão direito no arquivo .msix e selecione
+                        <strong>"Instalar"</strong>
+                    </li>
+                    <li class="mb-2">Se aparecer um aviso de segurança, clique em <strong>"Mais
+                            informações"</strong> e depois em <strong>"Executar mesmo assim"</strong></li>
+                    <li>Aguarde a instalação e abra o DoceFinance pelo menu Iniciar</li>
+                </ol>
+                <div class="alert alert-warning mt-3 mb-0">
+                    <small>
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Nota:</strong> O Windows pode solicitar permissão para instalar aplicativos
+                        de fontes desconhecidas. Isso é normal e seguro.
+                    </small>
                 </div>
+            </div>
 
-                <!-- Desktop Download Card -->
-                <div class="col-lg-5 col-md-6">
-                    <div class="download-card h-100">
-                        <div class="download-icon mb-4">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Versão Desktop</h4>
-                        <p class="text-muted mb-4">Para Windows. Versão completa com todas as funcionalidades para o seu
-                            computador.</p>
+            <a href="assets/src/downloads/DoceFinance_Desktop_Setup.zip" class="btn btn-primary btn-lg w-100" download>
+                <i class="fas fa-download me-2"></i>Baixar para Windows
+            </a>
+            <small class="text-muted d-block mt-2">
+                <i class="fas fa-file-archive me-1"></i>Formato: ZIP (contém MSIX)
+            </small>
+        </div>
+    </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="download-info bg-white p-4 rounded-3 shadow-sm">
+                <h5 class="fw-bold text-primary mb-3">
+                    <i class="fas fa-question-circle me-2"></i>Perguntas Frequentes
+                </h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="fw-bold mb-2">Preciso de uma conta para usar?</h6>
+                        <p class="text-muted small mb-3">Sim, você precisa criar uma conta e escolher um plano
+                            para usar o DoceFinance. Comece com o teste grátis de 14 dias!</p>
 
-                        <div class="download-instructions mb-4">
-                            <h6 class="fw-bold mb-3">
-                                <i class="fas fa-info-circle text-primary me-2"></i>Como Instalar:
-                            </h6>
-                            <ol class="text-start text-muted small">
-                                <li class="mb-2">Baixe o arquivo ZIP no botão abaixo</li>
-                                <li class="mb-2">Extraia o conteúdo do arquivo ZIP</li>
-                                <li class="mb-2">Localize o arquivo <strong>.msix</strong> dentro da pasta extraída</li>
-                                <li class="mb-2">Clique com o botão direito no arquivo .msix e selecione
-                                    <strong>"Instalar"</strong>
-                                </li>
-                                <li class="mb-2">Se aparecer um aviso de segurança, clique em <strong>"Mais
-                                        informações"</strong> e depois em <strong>"Executar mesmo assim"</strong></li>
-                                <li>Aguarde a instalação e abra o DoceFinance pelo menu Iniciar</li>
-                            </ol>
-                            <div class="alert alert-warning mt-3 mb-0">
-                                <small>
-                                    <i class="fas fa-exclamation-triangle me-2"></i>
-                                    <strong>Nota:</strong> O Windows pode solicitar permissão para instalar aplicativos
-                                    de fontes desconhecidas. Isso é normal e seguro.
-                                </small>
-                            </div>
-                        </div>
+                        <h6 class="fw-bold mb-2">Os dados são sincronizados?</h6>
+                        <p class="text-muted small mb-3">Sim! Seus dados são sincronizados entre todas as
+                            plataformas quando você faz login com a mesma conta.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="fw-bold mb-2">Qual versão devo baixar?</h6>
+                        <p class="text-muted small mb-3">Se você usa principalmente o celular, baixe a versão
+                            mobile. Para trabalhar no computador, baixe a versão desktop. Você pode usar ambas!
+                        </p>
 
-                        <a href="assets/src/downloads/DoceFinance_Desktop_Setup.zip"
-                            class="btn btn-primary btn-lg w-100" download>
-                            <i class="fas fa-download me-2"></i>Baixar para Windows
-                        </a>
-                        <small class="text-muted d-block mt-2">
-                            <i class="fas fa-file-archive me-1"></i>Formato: ZIP (contém MSIX)
-                        </small>
+                        <h6 class="fw-bold mb-2">Preciso de ajuda na instalação?</h6>
+                        <p class="text-muted small mb-0">Entre em contato conosco pelo WhatsApp ou email.
+                            Estamos prontos para ajudar!</p>
                     </div>
                 </div>
             </div>
-            <div class="row mt-5">
-                <div class="col-lg-8 mx-auto">
-                    <div class="download-info bg-white p-4 rounded-3 shadow-sm">
-                        <h5 class="fw-bold text-primary mb-3">
-                            <i class="fas fa-question-circle me-2"></i>Perguntas Frequentes
-                        </h5>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6 class="fw-bold mb-2">Preciso de uma conta para usar?</h6>
-                                <p class="text-muted small mb-3">Sim, você precisa criar uma conta e escolher um plano
-                                    para usar o DoceFinance. Comece com o teste grátis de 14 dias!</p>
-
-                                <h6 class="fw-bold mb-2">Os dados são sincronizados?</h6>
-                                <p class="text-muted small mb-3">Sim! Seus dados são sincronizados entre todas as
-                                    plataformas quando você faz login com a mesma conta.</p>
-                            </div>
-                            <div class="col-md-6">
-                                <h6 class="fw-bold mb-2">Qual versão devo baixar?</h6>
-                                <p class="text-muted small mb-3">Se você usa principalmente o celular, baixe a versão
-                                    mobile. Para trabalhar no computador, baixe a versão desktop. Você pode usar ambas!
-                                </p>
-
-                                <h6 class="fw-bold mb-2">Preciso de ajuda na instalação?</h6>
-                                <p class="text-muted small mb-0">Entre em contato conosco pelo WhatsApp ou email.
-                                    Estamos prontos para ajudar!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
+    </div>
+    </div>
     </section>
-
+-->
     <!-- CTA Section -->
     <section id="cta" class="py-5 bg-primary text-white">
         <div class="container">
@@ -620,9 +582,9 @@
                         DoceFinance.</p>
                 </div>
                 <div class="col-lg-4 text-lg-end">
-                    <button class="btn btn-light btn-lg px-4" data-bs-toggle="modal" data-bs-target="#demoModal">
-                        <i class="fas fa-rocket me-2"></i>Começar Agora
-                    </button>
+                    <a class="btn btn-light btn-lg px-4" href="contato.html">
+                        <i class="fas fa-paper-plane me-2"></i>Falar com a equipe
+                    </a>
                 </div>
             </div>
         </div>
@@ -676,11 +638,13 @@
                                     <i class="fas fa-chevron-right me-1"></i>Preços
                                 </a>
                             </li>
+                            <!--
                             <li class="mb-2">
                                 <a href="#download" class="footer-link">
                                     <i class="fas fa-chevron-right me-1"></i>Download
                                 </a>
                             </li>
+                            -->
                             <li class="mb-2">
                                 <a href="#testimonials" class="footer-link">
                                     <i class="fas fa-chevron-right me-1"></i>Depoimentos

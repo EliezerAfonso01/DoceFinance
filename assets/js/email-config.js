@@ -1,5 +1,5 @@
 window.DF_EMAIL = {
-    serviceId: 'service_d1o6wj3',
+    serviceId: 'service_lx2ypln',
     publicKey: '82X6k-0HL4d7IA-Ue',
     templates: {
         demo: 'template_1l9wuyi',

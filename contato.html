@@ -48,9 +48,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.html#pricing">Preços</a>
                     </li>
+                    <!--
                     <li class="nav-item">
                         <a class="nav-link" href="index.html#download">Download</a>
                     </li>
+                    -->
                     <li class="nav-item">
                         <a class="nav-link active" href="contato.html">Contato</a>
                     </li>
@@ -191,8 +193,11 @@
                                             class="text-danger">*</span></label>
                                     <select class="form-select" id="subject" name="subject" required>
                                         <option value="">Selecione um assunto</option>
+                                        <option value="solicitacao">Solicitar a aplicação</option>
                                         <option value="duvida">Dúvida sobre o produto</option>
                                         <option value="suporte">Suporte técnico</option>
+                                        <option value="feedback">Enviar feedback</option>
+                                        <option value="bug">Reportar um bug</option>
                                         <option value="planos">Informações sobre planos</option>
                                         <option value="demo">Solicitar demonstração</option>
                                         <option value="parceria">Proposta de parceria</option>
@@ -203,8 +208,9 @@
                                     <label for="message" class="form-label fw-bold">Mensagem <span
                                             class="text-danger">*</span></label>
                                     <textarea class="form-control" id="message" name="message" rows="6"
-                                        placeholder="Conte-nos como podemos ajudar você..." required></textarea>
-                                    <small class="text-muted">Mínimo 10 caracteres</small>
+                                        placeholder="Conte-nos como podemos ajudar você..." required
+                                        minlength="5"></textarea>
+                                    <small class="text-muted">Mínimo 5 caracteres</small>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-check">
@@ -390,6 +396,18 @@
             </div>
         </div>
     </footer>
+
+    <!-- Contact Toast -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+        <div id="contactToast" class="toast align-items-center text-bg-success border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="contactToastBody"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Fechar"></button>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

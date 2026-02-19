@@ -41,10 +41,41 @@ function showFormStatus(container, type, message) {
     else container.classList.add('alert', 'alert-danger');
 }
 
+function showFormStatusHtml(container, type, html) {
+    if (!container) return;
+    container.classList.remove('d-none', 'alert-success', 'alert-danger', 'alert-warning', 'alert-info');
+    container.innerHTML = html;
+    if (type === 'success') container.classList.add('alert', 'alert-success');
+    else if (type === 'warning') container.classList.add('alert', 'alert-warning');
+    else if (type === 'info') container.classList.add('alert', 'alert-info');
+    else container.classList.add('alert', 'alert-danger');
+}
+
+function showContactToast(type, html) {
+    const toastEl = document.getElementById('contactToast');
+    const toastBody = document.getElementById('contactToastBody');
+    if (!toastEl || !toastBody || !window.bootstrap) return;
+
+    toastEl.classList.remove('text-bg-success', 'text-bg-danger', 'text-bg-warning', 'text-bg-info');
+    if (type === 'success') toastEl.classList.add('text-bg-success');
+    else if (type === 'warning') toastEl.classList.add('text-bg-warning');
+    else if (type === 'info') toastEl.classList.add('text-bg-info');
+    else toastEl.classList.add('text-bg-danger');
+
+    toastBody.innerHTML = html;
+    const toast = bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 5000 });
+    toast.show();
+}
+
 async function sendEmail(formId, templateKey, params, buttonToRestore) {
     if (!window.emailjs || !window.DF_EMAIL || !window.DF_EMAIL.serviceId || !window.DF_EMAIL.templates || !window.DF_EMAIL.templates[templateKey]) {
-        const statusEl = document.getElementById(formId === 'demoForm' ? 'demoStatus' : 'planStatus');
-        showFormStatus(statusEl, 'danger', 'Configuração de envio ausente. Tente novamente mais tarde.');
+        const statusId = formId === 'demoForm' ? 'demoStatus' : (formId === 'contactForm' ? 'contactStatus' : 'planStatus');
+        const statusEl = document.getElementById(statusId);
+        if (formId === 'contactForm') {
+            showFormStatusHtml(statusEl, 'danger', 'Configuracao de envio ausente. Tente novamente ou fale conosco pelo <a href="https://wa.me/244955602059?text=Ola%2C%20tive%20problemas%20ao%20enviar%20o%20formulario%20no%20site%20DoceFinance" target="_blank" rel="noopener">WhatsApp</a>.');
+        } else {
+            showFormStatus(statusEl, 'danger', 'Configuração de envio ausente. Tente novamente mais tarde.');
+        }
         if (buttonToRestore && buttonToRestore.dataset && buttonToRestore.dataset.originalText) {
             buttonToRestore.innerHTML = buttonToRestore.dataset.originalText;
             buttonToRestore.disabled = false;
@@ -53,12 +84,18 @@ async function sendEmail(formId, templateKey, params, buttonToRestore) {
     }
     try {
         await window.emailjs.send(window.DF_EMAIL.serviceId, window.DF_EMAIL.templates[templateKey], params);
-        const statusEl = document.getElementById(formId === 'demoForm' ? 'demoStatus' : 'planStatus');
+        const statusId = formId === 'demoForm' ? 'demoStatus' : (formId === 'contactForm' ? 'contactStatus' : 'planStatus');
+        const statusEl = document.getElementById(statusId);
         showFormStatus(statusEl, 'success', 'Enviado com sucesso! Em breve entraremos em contato.');
         return true;
     } catch (err) {
-        const statusEl = document.getElementById(formId === 'demoForm' ? 'demoStatus' : 'planStatus');
-        showFormStatus(statusEl, 'danger', 'Falha ao enviar. Verifique sua conexão e tente novamente.');
+        const statusId = formId === 'demoForm' ? 'demoStatus' : (formId === 'contactForm' ? 'contactStatus' : 'planStatus');
+        const statusEl = document.getElementById(statusId);
+        if (formId === 'contactForm') {
+            showFormStatusHtml(statusEl, 'danger', 'Falha ao enviar. Verifique sua conexao e tente novamente, ou fale conosco pelo <a href="https://wa.me/244955602059?text=Ola%2C%20tive%20problemas%20ao%20enviar%20o%20formulario%20no%20site%20DoceFinance" target="_blank" rel="noopener">WhatsApp</a>.');
+        } else {
+            showFormStatus(statusEl, 'danger', 'Falha ao enviar. Verifique sua conexão e tente novamente.');
+        }
         return false;
     } finally {
         if (buttonToRestore && buttonToRestore.dataset && buttonToRestore.dataset.originalText) {
@@ -151,6 +188,9 @@ function initAnimations() {
 function initModals() {
     // Demo modal form submission
     const demoModal = document.getElementById('demoModal');
+    if (!demoModal) {
+        return;
+    }
     const demoForm = demoModal.querySelector('form');
     const demoSubmitBtn = demoModal.querySelector('.btn-primary');
 
@@ -860,6 +900,10 @@ function initContactForm() {
 
             // Send email
             const sent = await sendEmail('contactForm', 'demo', formData, submitBtn);
+
+            const successHtml = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
+            const failHtml = 'Falha ao enviar. Verifique sua conexao e tente novamente, ou fale conosco pelo <a href="https://wa.me/244955602059?text=Ola%2C%20tive%20problemas%20ao%20enviar%20o%20formulario%20no%20site%20DoceFinance" target="_blank" rel="noopener">WhatsApp</a>.';
+            showContactToast(sent ? 'success' : 'danger', sent ? successHtml : failHtml);
 
             if (sent) {
                 resetForm(contactForm);
